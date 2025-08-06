@@ -1,3 +1,5 @@
 {
-    "home":"Home"
+    "home":"Home",
+    "client_error":"Something went wrong",
+    "try_again":"Try Again"
 }
