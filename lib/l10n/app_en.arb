@@ -1,5 +1,25 @@
 {
     "home":"Home",
     "client_error":"Something went wrong",
-    "try_again":"Try Again"
+    "try_again":"Try Again",
+    "news_app":"News App",
+    "language":"Language",
+    "english":"English",
+    "arabic":"Arabic",
+    "theme":"Theme",
+    "light":"Light",
+    "dark":"Dark",
+    "general":"General",
+    "sports":"Sports",
+    "science":"Science",
+    "business":"Business",
+    "technology":"Technology",
+    "health":"Health",
+    "entertainment":"Entertainment",
+    "search":"Search",
+    "good_morning":"Good Morning",
+    "intro_statement":"Here is Some News For You",
+    "view_all":"View All",
+    "go_to_home":"Go To Home",
+    "by":"By"
 }
