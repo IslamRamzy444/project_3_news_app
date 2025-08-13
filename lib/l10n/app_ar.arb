@@ -1,5 +1,25 @@
 {
     "home": "الرئيسية",
     "client_error": "حدث خطأ ما",
-    "try_again": "حاول مرة أخرى"
+    "try_again": "حاول مرة أخرى",
+    "news_app": "تطبيق الأخبار",
+    "language": "اللغة",
+    "english": "الإنجليزية",
+    "arabic": "العربية",
+    "theme": "النمط",
+    "light": "نهارى",
+    "dark": "ليلى",
+    "general": "عام",
+    "sports": "رياضة",
+    "science": "علوم",
+    "business": "أعمال",
+    "technology": "تكنولوجيا",
+    "health": "صحة",
+    "entertainment": "ترفيه",
+    "search": "بحث",
+    "good_morning": "صباح الخير",
+    "intro_statement": "إليك بعض الأخبار لك",
+    "view_all": "عرض الكل",
+    "go_to_home": "الذهاب إلى الرئيسية",
+    "by": "بواسطة"
 }

@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:project_3_news_app/api/api_manager.dart';
+import 'package:project_3_news_app/models/category.dart';
 import 'package:project_3_news_app/models/source_response.dart';
 import 'package:project_3_news_app/ui/home/category_details/source/source_tab_widget.dart';
 import 'package:project_3_news_app/utils/app_colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:project_3_news_app/utils/app_styles.dart';
 class CategoryDetails extends StatefulWidget {
-  const CategoryDetails({super.key});
+  Category category;
+  CategoryDetails({super.key,required this.category});
 
   @override
   State<CategoryDetails> createState() => _CategoryDetailsState();
@@ -16,7 +18,7 @@ class _CategoryDetailsState extends State<CategoryDetails> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<SourceResponse?>(
-      future: ApiManager.getResources(), 
+      future: ApiManager.getResources(widget.category.id), 
       builder: (context, snapshot) {
         if(snapshot.connectionState==ConnectionState.waiting){
           return Center(
@@ -31,7 +33,7 @@ class _CategoryDetailsState extends State<CategoryDetails> {
                   backgroundColor: AppColors.greyColor
                 ),
                 onPressed: () {
-                  ApiManager.getResources();
+                  ApiManager.getResources(widget.category.id);
                   setState(() {
                     
                   });
@@ -49,7 +51,7 @@ class _CategoryDetailsState extends State<CategoryDetails> {
                   backgroundColor: AppColors.greyColor
                 ),
                 onPressed: () {
-                  ApiManager.getResources();
+                  ApiManager.getResources(widget.category.id);
                   setState(() {
                     
                   });
