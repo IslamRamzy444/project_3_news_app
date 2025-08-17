@@ -62,7 +62,7 @@ class _CategoryDetailsState extends State<CategoryDetails> {
           );
         }
         var sourcesList=snapshot.data?.sources??[];
-        return SourceTabWidget(sourcesList: sourcesList,);
+        return SourceTabWidget(sourcesList: sourcesList);
       },
     );
   }

@@ -6,7 +6,6 @@ import 'package:project_3_news_app/utils/app_colors.dart';
 
 class SourceTabWidget extends StatefulWidget {
   List<Source> sourcesList;
-
   SourceTabWidget({super.key,required this.sourcesList});
 
   @override
@@ -40,7 +39,7 @@ class _SourceTabWidgetState extends State<SourceTabWidget> {
               );
             },).toList()
           ),
-          Expanded(child: NewsWidget(source: widget.sourcesList[selectedIndex]))
+          Expanded(child: NewsWidget(source: widget.sourcesList[selectedIndex],))
         ],
       )
     );

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:project_3_news_app/api/api_manager.dart';
 import 'package:project_3_news_app/models/news_response.dart';
 import 'package:project_3_news_app/models/source_response.dart';
+import 'package:project_3_news_app/ui/home/category_details/news/news_details/news_details.dart';
 import 'package:project_3_news_app/ui/home/category_details/news/news_item.dart';
 import 'package:project_3_news_app/utils/app_colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -63,7 +64,15 @@ class _NewsWidgetState extends State<NewsWidget> {
         var newsList=snapshot.data?.articles??[];
         return ListView.separated(
           itemBuilder: (context, index) {
-            return NewsItem(article: newsList[index],);
+            return InkWell(
+              onTap: () {
+                showModalBottomSheet(
+                  context: context, 
+                  builder: (context) => NewsDetails(article:newsList[index] ,),
+                );
+              },
+              child: NewsItem(article: newsList[index],)
+            );
           }, 
           separatorBuilder: (context, index) {
             return SizedBox(height: 0.02*height,);
