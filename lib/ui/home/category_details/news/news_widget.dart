@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:project_3_news_app/api/api_manager.dart';
-import 'package:project_3_news_app/models/news_response.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:project_3_news_app/models/source_response.dart';
+import 'package:project_3_news_app/ui/home/category_details/news/cubit/news_states.dart';
+import 'package:project_3_news_app/ui/home/category_details/news/cubit/news_view_model.dart';
 import 'package:project_3_news_app/ui/home/category_details/news/news_details/news_details.dart';
 import 'package:project_3_news_app/ui/home/category_details/news/news_item.dart';
 import 'package:project_3_news_app/utils/app_colors.dart';
@@ -16,69 +17,66 @@ class NewsWidget extends StatefulWidget {
 }
 
 class _NewsWidgetState extends State<NewsWidget> {
+  late NewsViewModel viewModel;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    viewModel=NewsViewModel();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      viewModel.getNewsBySourceId(widget.source.id??'');
+    },);
+  }
+  @override
+  void didUpdateWidget(covariant NewsWidget oldWidget) {
+    // TODO: implement didUpdateWidget
+    super.didUpdateWidget(oldWidget);
+    if(oldWidget.source.id!=widget.source.id){
+      viewModel.getNewsBySourceId(widget.source.id??'');
+    }
+  }
   @override
   Widget build(BuildContext context) {
     var height=MediaQuery.sizeOf(context).height;
-    return FutureBuilder<NewsResponse?>(
-      future: ApiManager.getNewsBySourceId(widget.source.id??''), 
-      builder: (context, snapshot) {
-        if(snapshot.connectionState==ConnectionState.waiting){
-          return Center(child: CircularProgressIndicator(color: AppColors.greyColor,),);
-        }else if(snapshot.hasError){
+    return BlocBuilder<NewsViewModel,NewsStates>(
+      bloc: viewModel,
+      builder: (context, state) {
+        if(state is NewsErrorState){
           return Column(
             children: [
-              Text(AppLocalizations.of(context)!.client_error,style: Theme.of(context).textTheme.headlineMedium,),
+              Text(state.errorMessage,style: Theme.of(context).textTheme.headlineMedium,),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: AppColors.greyColor
                 ),
                 onPressed: () {
-                  ApiManager.getNewsBySourceId(widget.source.id??'');
-                  setState(() {
-                    
-                  });
+                  viewModel.getNewsBySourceId(widget.source.id??'');
                 }, 
                 child: Text(AppLocalizations.of(context)!.try_again,style: AppStyles.medium14White,)
               )
             ],
           );
-        }else if(snapshot.data?.status!="ok"){
-          return Column(
-            children: [
-              Text(snapshot.data!.message!,style: Theme.of(context).textTheme.headlineMedium,),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.greyColor
-                ),
-                onPressed: () {
-                  ApiManager.getNewsBySourceId(widget.source.id??'');
-                  setState(() {
-                    
-                  });
-                }, 
-                child: Text(AppLocalizations.of(context)!.try_again,style: AppStyles.medium14White,)
-              )
-            ],
-          );
-        }
-        var newsList=snapshot.data?.articles??[];
-        return ListView.separated(
+        }else if(state is NewsSuccessState){
+          return ListView.separated(
           itemBuilder: (context, index) {
             return InkWell(
               onTap: () {
                 showModalBottomSheet(
                   context: context, 
-                  builder: (context) => NewsDetails(article:newsList[index] ,),
+                  builder: (context) => NewsDetails(article:state.newsList[index] ,),
                 );
               },
-              child: NewsItem(article: newsList[index],)
+              child: NewsItem(article: state.newsList[index],)
             );
           }, 
           separatorBuilder: (context, index) {
             return SizedBox(height: 0.02*height,);
           }, 
-          itemCount: newsList.length
+          itemCount: state.newsList.length
         );
+        }else{
+          return Center(child: CircularProgressIndicator(color: AppColors.greyColor,),);
+        }
       },
     );
   }

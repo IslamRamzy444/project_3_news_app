@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:project_3_news_app/providers/app_language_provider.dart';
 import 'package:project_3_news_app/providers/app_theme_provider.dart';
 import 'package:project_3_news_app/ui/home/category_details/news/full_article/full_article_web_view_page.dart';
@@ -6,8 +7,10 @@ import 'package:project_3_news_app/ui/home/home_screen.dart';
 import 'package:project_3_news_app/utils/app_routes.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:project_3_news_app/utils/app_theme.dart';
+import 'package:project_3_news_app/utils/my_bloc_observer.dart';
 import 'package:provider/provider.dart';
 void main() {
+  Bloc.observer = MyBlocObserver();
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(create: (context) => AppThemeProvider(),),
