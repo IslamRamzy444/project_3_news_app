@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:project_3_news_app/di/di.dart';
 import 'package:project_3_news_app/models/category.dart';
 import 'package:project_3_news_app/ui/home/category_details/source/cubit/sources_states.dart';
 import 'package:project_3_news_app/ui/home/category_details/source/cubit/sources_view_model.dart';
@@ -16,7 +17,7 @@ class CategoryDetails extends StatefulWidget {
 }
 
 class _CategoryDetailsState extends State<CategoryDetails> {
-  SourcesViewModel viewModel=SourcesViewModel();
+  SourcesViewModel viewModel=SourcesViewModel(sourceRepository: sourceRepositoryInjection());
   @override
   void initState() {
     // TODO: implement initState

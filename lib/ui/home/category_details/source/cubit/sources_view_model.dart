@@ -1,10 +1,11 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:project_3_news_app/api/api_manager.dart';
+import 'package:project_3_news_app/data/repository/sources/repository/source_repository.dart';
 import 'package:project_3_news_app/ui/home/category_details/source/cubit/sources_states.dart';
 
 class SourcesViewModel extends Cubit<SourcesStates>{
+  SourceRepository sourceRepository;
   int selectedIndex=0;
-  SourcesViewModel():super(SourceLoadingState());
+  SourcesViewModel({required this.sourceRepository}):super(SourceLoadingState());
   void changeIndex(int newIndex){
     selectedIndex=newIndex;
     emit(SourceSwitchingState());
@@ -12,7 +13,7 @@ class SourcesViewModel extends Cubit<SourcesStates>{
   void getResources(String categoryId)async{
     emit(SourceLoadingState());
     try{
-      var response=await ApiManager.getResources(categoryId);
+      var response=await sourceRepository.getResources(categoryId);
       if(response?.status=="error"){
         emit(SourceErrorState(errorMessage: response!.message!));
       }else{
