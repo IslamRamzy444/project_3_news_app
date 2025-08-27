@@ -7,6 +7,12 @@ import 'package:project_3_news_app/models/news_response.dart';
 import 'package:project_3_news_app/models/source_response.dart';
 // https://newsapi.org/v2/everything?q=bitcoin&apiKey=fb2537aade0a4e4bb8b56ccee8bec151
 class ApiManager {
+  static ApiManager? _instance;
+  ApiManager._();
+  static ApiManager getInstance(){
+    _instance??=ApiManager._();
+    return _instance!;
+  }
   Future<SourceResponse?> getResources(String categoryId)async{
     Uri url=Uri.https(ApiConstants.baseUrl,ApiEndPoints.sourceApi,{
       'apiKey':ApiConstants.apiKey,

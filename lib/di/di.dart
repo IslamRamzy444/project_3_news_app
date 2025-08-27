@@ -19,13 +19,10 @@ SourceRepository sourceRepositoryInjection(){
   );
 }
 SourceRemoteDataSource sourceRemoteDataSourceInjection(){
-  return SourceRemoteDataSourceImpl(apiManager: apiManagerInjection());
+  return SourceRemoteDataSourceImpl(apiManager: ApiManager.getInstance());
 }
 SourceLocalDataSource sourceLocalDataSourceInjection(){
   return SourceLocalDataSourceImpl();
-}
-ApiManager apiManagerInjection(){
-  return ApiManager();
 }
 NewsRepository newsRepositoryInjection(){
   return NewsRepositoryImpl(
@@ -34,7 +31,7 @@ NewsRepository newsRepositoryInjection(){
   );
 }
 NewsRemoteDataSource newsRemoteDataSourceInjection(){
-  return NewsRemoteDataSourceImpl(apiManager: apiManagerInjection());
+  return NewsRemoteDataSourceImpl(apiManager: ApiManager.getInstance());
 }
 NewsLocalDataSource newsLocalDataSourceInjection(){
   return NewsLocalDataSourceImpl();
