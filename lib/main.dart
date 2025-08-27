@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:project_3_news_app/di/di_injectable.dart';
 import 'package:project_3_news_app/models/news_response.dart';
 import 'package:project_3_news_app/models/source_response.dart';
 import 'package:project_3_news_app/providers/app_language_provider.dart';
@@ -23,6 +24,7 @@ void main() async{
   Hive.registerAdapter(SourceAdapter());
   Hive.registerAdapter(NewsResponseAdapter());
   Hive.registerAdapter(NewsAdapter());
+  configureDependencies();
   Bloc.observer = MyBlocObserver();
   runApp(MultiProvider(
     providers: [

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:project_3_news_app/di/di.dart';
+import 'package:project_3_news_app/di/di_injectable.dart';
 import 'package:project_3_news_app/models/source_response.dart';
 import 'package:project_3_news_app/ui/home/category_details/news/news_widget.dart';
 import 'package:project_3_news_app/ui/home/category_details/source/cubit/sources_states.dart';
@@ -17,7 +17,7 @@ class SourceTabWidget extends StatefulWidget {
 }
 
 class _SourceTabWidgetState extends State<SourceTabWidget> {
-  SourcesViewModel viewModel=SourcesViewModel(sourceRepository: sourceRepositoryInjection());
+  SourcesViewModel viewModel=getIt<SourcesViewModel>();
 
   @override
   Widget build(BuildContext context) {

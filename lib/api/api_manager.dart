@@ -1,11 +1,12 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:injectable/injectable.dart';
 import 'package:project_3_news_app/api/api_constants.dart';
 import 'package:project_3_news_app/api/api_end_points.dart';
 import 'package:project_3_news_app/models/news_response.dart';
 import 'package:project_3_news_app/models/source_response.dart';
-// https://newsapi.org/v2/everything?q=bitcoin&apiKey=fb2537aade0a4e4bb8b56ccee8bec151
+@singleton
 class ApiManager {
   Future<SourceResponse?> getResources(String categoryId)async{
     Uri url=Uri.https(ApiConstants.baseUrl,ApiEndPoints.sourceApi,{

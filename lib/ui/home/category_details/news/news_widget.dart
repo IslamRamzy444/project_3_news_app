@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:project_3_news_app/di/di.dart';
+import 'package:project_3_news_app/di/di_injectable.dart';
 import 'package:project_3_news_app/models/source_response.dart';
 import 'package:project_3_news_app/ui/home/category_details/news/cubit/news_states.dart';
 import 'package:project_3_news_app/ui/home/category_details/news/cubit/news_view_model.dart';
@@ -23,7 +23,7 @@ class _NewsWidgetState extends State<NewsWidget> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    viewModel=NewsViewModel(newsRepository: newsRepositoryInjection());
+    viewModel=getIt<NewsViewModel>();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       viewModel.getNewsBySourceId(widget.source.id??'');
     },);

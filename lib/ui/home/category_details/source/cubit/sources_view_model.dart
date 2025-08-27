@@ -1,7 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 import 'package:project_3_news_app/data/repository/sources/repository/source_repository.dart';
 import 'package:project_3_news_app/ui/home/category_details/source/cubit/sources_states.dart';
-
+@injectable
 class SourcesViewModel extends Cubit<SourcesStates>{
   SourceRepository sourceRepository;
   int selectedIndex=0;
