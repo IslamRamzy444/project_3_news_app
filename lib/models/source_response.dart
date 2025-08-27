@@ -1,8 +1,15 @@
+import 'package:hive/hive.dart';
 
-class SourceResponse {
+part 'source_response.g.dart';
+@HiveType(typeId: 1)
+class SourceResponse extends HiveObject{
+  @HiveField(0)
   String? status;
+  @HiveField(1)
   List<Source>? sources;
+  @HiveField(2)
   String? code;
+  @HiveField(3)
   String? message;
   SourceResponse({this.status,this.code,this.message,this.sources});
 
@@ -26,14 +33,21 @@ class SourceResponse {
     return _data;
   }
 }
-
-class Source {
+@HiveType(typeId: 2)
+class Source extends HiveObject{
+  @HiveField(0)
   String? id;
+  @HiveField(1)
   String? name;
+  @HiveField(2)
   String? description;
+  @HiveField(3)
   String? url;
+  @HiveField(4)
   String? category;
+  @HiveField(5)
   String? language;
+  @HiveField(6)
   String? country;
 
   Source({this.id, this.name, this.description, this.url, this.category, this.language, this.country});
