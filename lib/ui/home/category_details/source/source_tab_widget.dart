@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:project_3_news_app/models/source_response.dart';
+import 'package:project_3_news_app/api/model/source.dart';
 import 'package:project_3_news_app/ui/home/category_details/news/news_widget.dart';
 import 'package:project_3_news_app/ui/home/category_details/source/source_name.dart';
 import 'package:project_3_news_app/utils/app_colors.dart';

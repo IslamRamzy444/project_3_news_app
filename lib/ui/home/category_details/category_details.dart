@@ -1,7 +1,8 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:project_3_news_app/api/api_manager.dart';
+import 'package:project_3_news_app/api/api_constants.dart';
+import 'package:project_3_news_app/api/retrofit_services.dart';
 import 'package:project_3_news_app/models/category.dart';
-import 'package:project_3_news_app/models/source_response.dart';
 import 'package:project_3_news_app/ui/home/category_details/source/source_tab_widget.dart';
 import 'package:project_3_news_app/utils/app_colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -17,8 +18,8 @@ class CategoryDetails extends StatefulWidget {
 class _CategoryDetailsState extends State<CategoryDetails> {
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<SourceResponse?>(
-      future: ApiManager.getResources(widget.category.id), 
+    return FutureBuilder(
+      future: RetrofitServices(Dio()).getResources(ApiConstants.apiKey,widget.category.id), 
       builder: (context, snapshot) {
         if(snapshot.connectionState==ConnectionState.waiting){
           return Center(
@@ -33,7 +34,7 @@ class _CategoryDetailsState extends State<CategoryDetails> {
                   backgroundColor: AppColors.greyColor
                 ),
                 onPressed: () {
-                  ApiManager.getResources(widget.category.id);
+                  RetrofitServices(Dio()).getResources(ApiConstants.apiKey,widget.category.id);
                   setState(() {
                     
                   });
@@ -51,7 +52,7 @@ class _CategoryDetailsState extends State<CategoryDetails> {
                   backgroundColor: AppColors.greyColor
                 ),
                 onPressed: () {
-                  ApiManager.getResources(widget.category.id);
+                  RetrofitServices(Dio()).getResources(ApiConstants.apiKey,widget.category.id);
                   setState(() {
                     
                   });
@@ -60,9 +61,15 @@ class _CategoryDetailsState extends State<CategoryDetails> {
               )
             ],
           );
+        }else if(snapshot.hasData){
+          var sourcesList=snapshot.data!.sources;
+          if(sourcesList==null || sourcesList.isEmpty){
+            return Center(child: Text("No sources found yet",style: Theme.of(context).textTheme.headlineMedium,));
+          }else{
+            return SourceTabWidget(sourcesList: sourcesList);
+          }
         }
-        var sourcesList=snapshot.data?.sources??[];
-        return SourceTabWidget(sourcesList: sourcesList);
+        return Container();
       },
     );
   }

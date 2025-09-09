@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:project_3_news_app/models/news_response.dart';
+import 'package:project_3_news_app/api/model/news.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class FullArticleWebViewPage extends StatefulWidget {
