@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:project_3_news_app/l10n/app_localizations.dart';
 import 'package:project_3_news_app/models/category.dart';
 import 'package:project_3_news_app/ui/home/category_details/category_details.dart';
 import 'package:project_3_news_app/ui/home/category_fragment/category_fragment.dart';

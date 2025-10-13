@@ -4,7 +4,7 @@ import 'package:project_3_news_app/models/news_response.dart';
 import 'package:project_3_news_app/utils/app_colors.dart';
 import 'package:project_3_news_app/utils/app_routes.dart';
 import 'package:project_3_news_app/utils/app_styles.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:project_3_news_app/l10n/app_localizations.dart';
 class NewsDetails extends StatelessWidget {
   News article;
   NewsDetails({super.key,required this.article});

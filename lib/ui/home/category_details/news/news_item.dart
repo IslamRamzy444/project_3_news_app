@@ -5,7 +5,7 @@ import 'package:project_3_news_app/providers/app_language_provider.dart';
 import 'package:project_3_news_app/utils/app_colors.dart';
 import 'package:project_3_news_app/utils/app_styles.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:project_3_news_app/l10n/app_localizations.dart';
 import 'package:timeago/timeago.dart' as timeago;
 class NewsItem extends StatelessWidget {
   News article;
