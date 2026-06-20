@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:project_3_news_app/l10n/app_localizations.dart';
 import 'package:project_3_news_app/utils/app_assets.dart';
 class Category {
   String id;

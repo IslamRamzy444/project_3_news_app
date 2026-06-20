@@ -1,13 +1,15 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:project_3_news_app/di/di.dart';
+import 'package:project_3_news_app/l10n/app_localizations.dart';
 import 'package:project_3_news_app/models/source_response.dart';
 import 'package:project_3_news_app/ui/home/category_details/news/cubit/news_states.dart';
 import 'package:project_3_news_app/ui/home/category_details/news/cubit/news_view_model.dart';
 import 'package:project_3_news_app/ui/home/category_details/news/news_details/news_details.dart';
 import 'package:project_3_news_app/ui/home/category_details/news/news_item.dart';
 import 'package:project_3_news_app/utils/app_colors.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:project_3_news_app/utils/app_styles.dart';
 class NewsWidget extends StatefulWidget {
   Source source;

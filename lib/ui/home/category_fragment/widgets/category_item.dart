@@ -1,7 +1,9 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
+import 'package:project_3_news_app/l10n/app_localizations.dart';
 import 'package:project_3_news_app/models/category.dart';
 import 'package:project_3_news_app/utils/app_colors.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class CategoryItem extends StatelessWidget {
   Category category;
   int index;

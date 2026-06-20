@@ -1,6 +1,8 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
+import 'package:project_3_news_app/l10n/app_localizations.dart';
 import 'package:project_3_news_app/models/category.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:project_3_news_app/providers/app_theme_provider.dart';
 import 'package:project_3_news_app/ui/home/category_fragment/widgets/category_item.dart';
 import 'package:provider/provider.dart';

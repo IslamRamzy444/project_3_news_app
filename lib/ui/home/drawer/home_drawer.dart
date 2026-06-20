@@ -1,11 +1,13 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
+import 'package:project_3_news_app/l10n/app_localizations.dart';
 import 'package:project_3_news_app/providers/app_language_provider.dart';
 import 'package:project_3_news_app/providers/app_theme_provider.dart';
 import 'package:project_3_news_app/ui/home/drawer/widget/app_config_bottom_sheet.dart';
 import 'package:project_3_news_app/ui/home/drawer/widget/drawer_item.dart';
 import 'package:project_3_news_app/utils/app_assets.dart';
 import 'package:project_3_news_app/utils/app_colors.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:project_3_news_app/utils/app_styles.dart';
 import 'package:provider/provider.dart';
 class HomeDrawer extends StatelessWidget {

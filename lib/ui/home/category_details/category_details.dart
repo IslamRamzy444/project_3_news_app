@@ -1,12 +1,14 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:project_3_news_app/di/di.dart';
+import 'package:project_3_news_app/l10n/app_localizations.dart';
 import 'package:project_3_news_app/models/category.dart';
 import 'package:project_3_news_app/ui/home/category_details/source/cubit/sources_states.dart';
 import 'package:project_3_news_app/ui/home/category_details/source/cubit/sources_view_model.dart';
 import 'package:project_3_news_app/ui/home/category_details/source/source_tab_widget.dart';
 import 'package:project_3_news_app/utils/app_colors.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:project_3_news_app/utils/app_styles.dart';
 class CategoryDetails extends StatefulWidget {
   Category category;

@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:project_3_news_app/utils/app_colors.dart';
 import 'package:project_3_news_app/utils/app_styles.dart';
